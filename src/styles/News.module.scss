@@ -1,0 +1,11 @@
+@import "colors";
+
+.text {
+  color: $colorRed;
+  background-color: silver;
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
