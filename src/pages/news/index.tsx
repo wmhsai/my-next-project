@@ -1,11 +1,18 @@
-import styles from "../../styles/News.module.scss"
+import styles from "../../styles/News.module.scss";
 //styled-jsx
-const News = () => {
+const News = ({ posts }: { posts: any }) => {
+    console.log(posts, "posts");
+
     return (
         <div>
             <p className={styles.text}>
-                News
+                Newsdgf
             </p>
+            {posts.map((item: any) => {
+                <h3 key={item.id} style={{color:"red"}}>
+                    {item.title}
+                </h3>
+            })}
             <style jsx>{`
                 {/* p {
                     color:red;
@@ -23,3 +30,11 @@ const News = () => {
 }
 
 export default News
+ 
+export async function getStaticProps() {
+    const res = await fetch("http://localhost:3001/posts");
+    const data = await res.json();
+    return {
+        props: { posts: data }
+    }
+}
